@@ -1,0 +1,11 @@
+{
+  "validCredencials": {
+    "validUsername": "standard_user",
+    "validPassword": "secret_sauce"
+  },
+
+  "invalidCredencials": {
+    "invalidUsername": "error_user",
+    "invalidPassword": "error_password"
+  }
+}

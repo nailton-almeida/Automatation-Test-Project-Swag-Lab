@@ -23,3 +23,18 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+import loginPage from "../e2e/pages/loginPage"
+import inventoryPage from "../e2e/pages/inventoryPage";
+
+
+Cypress.Commands.add('loginInUI', function () {
+    cy.fixture('..//fixtures//credencialsToAutentication.json').then((fakeUserData) => {
+        cy.visit('/')
+        loginPage.checkElementVisible(loginPage.getUsernameElement())
+        loginPage.enterUsername(fakeUserData.validCredencials.validUsername);
+        loginPage.enterPassword(fakeUserData.validCredencials.validPassword);
+        loginPage.clickSubmitLoginButton();
+        inventoryPage.checkElementVisible(inventoryPage.getHeaderContainer());
+    })
+})

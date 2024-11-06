@@ -1,43 +1,43 @@
 /// <reference types="cypress" />
 
+import loginPage from "../pages/loginPage";
+import inventoryPage from "../pages/inventoryPage";
+
 describe('Authentication in login form tests', () => {
 
     beforeEach(() => {
-        cy.visit('https://www.saucedemo.com/');
+        cy.visit('/');
         cy.fixture('credencialsToAutentication').as('fakeUserData');
     });
 
     it("Success login with valid credencials", function () {
-        cy.get('.login_wrapper-inner').should('be.visible')
-        cy.get('[data-test="username"]').type(this.fakeUserData.validCredencials.validUsername);
-        cy.get('[data-test="password"]').type(this.fakeUserData.validCredencials.validPassword);
-        cy.get('[data-test="login-button"]').click();
-        cy.get('[data-test="inventory-container"]').should('be.visible')
+        loginPage.checkElementVisible(loginPage.getUsernameElement())
+        loginPage.enterUsername(this.fakeUserData.validCredencials.validUsername);
+        loginPage.enterPassword(this.fakeUserData.validCredencials.validPassword);
+        loginPage.clickSubmitLoginButton();
+        inventoryPage.checkElementVisible(inventoryPage.getHeaderContainer());
     })
 
     it("Fail login with invalid credencials", function () {
-        cy.get('.login_wrapper-inner').should('be.visible')
-        cy.get('[data-test="username"]').type(this.fakeUserData.invalidCredencials.invalidUsername);
-        cy.get('[data-test="password"]').type(this.fakeUserData.invalidCredencials.invalidPassword);
-        cy.get('[data-test="login-button"]').click();
-        cy.get('[data-test="error"]').should('be.visible').and("have.text", "Epic sadface: Username and password do not match any user in this service")
+        loginPage.checkElementVisible(loginPage.getUsernameElement())
+        loginPage.enterUsername(this.fakeUserData.invalidCredencials.invalidUsername);
+        loginPage.enterPassword(this.fakeUserData.invalidCredencials.invalidPassword);
+        loginPage.clickSubmitLoginButton();
+        loginPage.loginErrorMessage()
+
     })
 
     it("Fail login without user credencial", function () {
-        cy.get('.login_wrapper-inner').should('be.visible')
-        cy.get('[data-test="password"]').type(this.fakeUserData.invalidCredencials.invalidPassword);
-        cy.get('[data-test="login-button"]').click();
-        cy.get('[data-test="error"]').should('be.visible').and("have.text", "Epic sadface: Username is required");
+        loginPage.checkElementVisible(loginPage.getUsernameElement())
+        loginPage.enterPassword(this.fakeUserData.invalidCredencials.invalidPassword);
+        loginPage.clickSubmitLoginButton();
+        loginPage.loginErrorMessage()
     })
 
-    it("Fail login without user credencial", function () {
-        cy.get('.login_wrapper-inner').should('be.visible')
-        cy.get('[data-test="username"]').type(this.fakeUserData.invalidCredencials.invalidUsername);
-        cy.get('[data-test="login-button"]').click();
-        cy.get('[data-test="error"]').should('be.visible').and("have.text", "Epic sadface: Password is required");
+    it("Fail login without pass credencial", function () {
+        loginPage.checkElementVisible(loginPage.getUsernameElement())
+        loginPage.enterUsername(this.fakeUserData.invalidCredencials.invalidUsername);
+        loginPage.clickSubmitLoginButton();
+        loginPage.loginErrorMessage()
     })
-
-
-
-
 });

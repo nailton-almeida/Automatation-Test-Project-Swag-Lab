@@ -10,12 +10,6 @@ class LoginPage extends BasePage {
 
     getLoginErrorMessageElement() { return '[data-test="error"]' }
 
-    //getMessageInvalidCredencials() { return "Epic sadface: Username and password do not match any user in this service" }
-
-    //getMessageLoginWithoutUser() { return "Epic sadface: Username is required" }
-
-    //getMessageLoginWithoutPass() { return "Epic sadface: Password is required" }
-
     enterUsername(username) {
         this.typeInElement(this.getUsernameElement(), username)
     }

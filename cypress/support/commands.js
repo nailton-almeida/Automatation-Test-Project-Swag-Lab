@@ -38,3 +38,4 @@ Cypress.Commands.add('loginInUI', function () {
         inventoryPage.checkElementVisible(inventoryPage.getHeaderContainer());
     })
 })
+

@@ -1,0 +1,26 @@
+{
+  "name": "automatation-test-project-swag-lab",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "chrome:smoke:headless": "cypress run --browser chrome --spec cypress\\e2e\\smokeTest\\*.js",
+    "chrome:regression:headless": "cypress run --browser chrome --spec \\cypress\\e2e\\regressionTest\\*.js",
+    "chrome:local:development": "cypress open --browser chrome",
+    "firefox:smoke:headless": "cypress run --browser firefox --spec \\cypress\\e2e\\smokeTest\\*.js",
+    "firefox:regression:headless": "cypress run --browser firefox --spec \\cypress\\e2e\\regressionTest\\*.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "cypress": "^13.15.1"
+  },
+  "devDependencies": {
+    "cypress-mochawesome-reporter": "^3.8.2",
+    "cypress-xpath": "^2.0.1",
+    "mochawesome": "^7.1.3",
+    "mochawesome-merge": "^4.3.0",
+    "mochawesome-report-generator": "^6.2.0"
+  }
+}

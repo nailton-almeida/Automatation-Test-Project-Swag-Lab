@@ -15,7 +15,7 @@ module.exports = defineConfig({
       charts: true,
       reportDir: './cypress/reports/mochawesome',
       reportPageTitle: 'SwagLab Test Project',
-      reportFilename: "report",
+      reportFilename: "report_ui_mochawesome_smoke_test",
       embeddedScreenshots: true,
       inlineAssets: true,
       saveAllAttempts: false,

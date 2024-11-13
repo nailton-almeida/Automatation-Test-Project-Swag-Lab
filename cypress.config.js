@@ -4,6 +4,7 @@ module.exports = defineConfig({
 
 
   e2e: {
+    browser: 'chrome',
     baseUrl: "https://www.saucedemo.com",
     defaultCommandTimeout: 5000,
     watchForFileChanges: false,

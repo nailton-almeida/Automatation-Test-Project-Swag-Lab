@@ -1,1 +1,1 @@
-# Automatation-Test-Project-Swag-Lab
+# Estudando a última versão do framework para teste automatizados Cypress
